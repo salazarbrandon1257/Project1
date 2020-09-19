@@ -282,7 +282,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         public Node<AnyType>   next;
     }
     
-    private int theSize;
+    private int theSize; 
     private Node<AnyType> beginMarker;
     private Node<AnyType> endMarker;
 }
