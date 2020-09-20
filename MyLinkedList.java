@@ -270,12 +270,16 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
             p = p.next;
         }
     }
-    public void insertList(MyLinkedList<Integer> ins, int idx)
+    public void insertList(MyLinkedList<AnyType> ins, int idx)
     {
         insertList(ins, getNode(idx));
     }
-    private void insertList(MyLinkedList<Integer> ins, Node<AnyType> p){
-        
+    private void insertList(MyLinkedList<AnyType> ins, Node<AnyType> p){
+        Node<AnyType> temp = p.next;
+        p.next = ins.beginMarker.next;
+        ins.beginMarker.next.prev = p;
+        ins.endMarker.prev.next = temp;
+        temp.prev = ins.endMarker.prev;
     }
 
 
@@ -363,14 +367,17 @@ class TestLinkedList
     public static void main( String [ ] args )
     {
         MyLinkedList<Integer> lst = new MyLinkedList<Integer>( );
-        
+        MyLinkedList<Integer> lst2 = new MyLinkedList<Integer>( );
         for( int i = 1; i < 5; i++ )
             lst.add( i );
+        for( int i = 3; i < 8; i+=2 )
+            lst2.add( i );
         //System.out.println(lst);
         //lst.swap(0, 0);
-        //System.out.println(lst);       
-        lst.erase(0, 1);
-
-        System.out.println(lst);
+        System.out.println(lst + "list before");       
+        // lst.erase(0, 1);
+        System.out.println(lst2 +"list2");
+        lst.insertList(lst2, 0);
+        System.out.println(lst + "result");
     }
 }
