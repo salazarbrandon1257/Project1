@@ -32,7 +32,5 @@ make a stack to solve the balanced symbol problem.
         add code to the main method to demonstrate each of your methods
   
 
-Part 2
-
-  Create a MyStack class that uses an ArrayList to make a stack.
+2. Create a MyStack class that uses an ArrayList to make a stack.
 
