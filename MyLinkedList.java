@@ -270,6 +270,13 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
             p = p.next;
         }
     }
+    public void insertList(MyLinkedList<Integer> ins, int idx)
+    {
+        insertList(ins, getNode(idx));
+    }
+    private void insertList(MyLinkedList<Integer> ins, Node<AnyType> p){
+        
+    }
 
 
     /**
