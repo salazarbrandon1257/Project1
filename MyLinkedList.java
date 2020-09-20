@@ -373,21 +373,20 @@ class TestLinkedList
     public static void main( String [ ] args )
     {
         MyLinkedList<Integer> lst = new MyLinkedList<Integer>( );
+        MyLinkedList<Integer> lstCopy = new MyLinkedList<Integer>( );
         MyLinkedList<Integer> lst2 = new MyLinkedList<Integer>( );
-        MyLinkedList<Integer> swap;
-        MyLinkedList<Integer> shift;
-        MyLinkedList<Integer> erase;
-        MyLinkedList<Integer> insertList;
 
-        for( int i = 1; i < 5; i++ )
-            lst.add( i );
+        for(int i = 1; i < 5; i++){
+            lst.add(i);
+            lstCopy.add(i);
+        }
         for( int i = 3; i < 8; i+=2 )
             lst2.add( i );
 
         System.out.println("a. swap");
-        System.out.println(lst + " this is the original list");
+        System.out.print(lst + "  swap(0, 2)  ");
         lst.swap(0, 2);
-        System.out.println(lst + " this is the list after swapping the nodes at index 0 and 2"); 
+        System.out.println(lst); 
         lst.swap(0, 2); // I now return to the original list by swapping the two nodes back
         System.out.println(" "); 
 
@@ -399,30 +398,24 @@ class TestLinkedList
         lst.shift(-1); // to return to the original list
         System.out.print(lst + "  shifted - 1  ");
         lst.shift(-1);
-        lst.shift(1);
         System.out.println(lst);
+        lst.shift(1); // to return to the original list 
         System.out.println(""); 
+
 
         System.out.println("c. erase"); 
-        System.out.print(lst + "  shifted + 1  ");  
-        lst.shift(1);
-        System.out.println(lst);
-        lst.shift(-1); // to return to the original list
-        System.out.print(lst + "  shifted - 1  ");
-        lst.shift(-1);
-        lst.shift(1);
+        System.out.print(lst + "  erase(1, 2)  ");  
+        lst.erase(1, 2);
         System.out.println(lst);
         System.out.println(""); 
 
 
-
-
-
-
-        // lst.erase(0, 1);
-        //System.out.println(lst2 + "list2");
-        //lst.insertList(0, lst2);
-        //System.out.println(lst + "result");
-
+        // using lstCopy because lst was modified
+        System.out.println("d. insertList"); 
+        System.out.println("With lst2 = [3 5 7]");
+        System.out.print(lstCopy + "  insert(1, lst2)  ");  
+        lstCopy.insertList(1, lst2);
+        System.out.println(lstCopy);
+        System.out.println(""); 
     }
 }
