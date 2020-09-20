@@ -1,4 +1,5 @@
 # Project1
+<pre>
 Introduction: This is a project for my CS 5343.001 - Algorithm Analysis and Data Structures course
 
 In this project I will add methods to an existing linked list class and
@@ -33,4 +34,5 @@ make a stack to solve the balanced symbol problem.
   
 
 2. Create a MyStack class that uses an ArrayList to make a stack.
+</pre>
 
