@@ -166,7 +166,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         return p.data;
     }
         
-    /**
+    /** IS O(n), due to getNode method
      * Receives two index positions as parameters, then swap
      * @param idx the index of the object.
      * @param idx2 the index of the object.
@@ -267,12 +267,9 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
             p.next.prev = p.prev;
             p.prev.next = p.next;
             theSize--;
+            p = p.next;
         }
-
-
     }
-
-
 
 
     /**
@@ -365,7 +362,8 @@ class TestLinkedList
         //System.out.println(lst);
         //lst.swap(0, 0);
         //System.out.println(lst);       
-        lst.erase(0, 2);
-        System.out.println( lst );
+        lst.erase(0, 1);
+
+        System.out.println(lst);
     }
 }
