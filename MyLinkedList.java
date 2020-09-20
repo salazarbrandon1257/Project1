@@ -270,16 +270,23 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
             p = p.next;
         }
     }
-    public void insertList(MyLinkedList<AnyType> ins, int idx)
+
+
+    // Is O(n) due to getNode method, if you call this function twice however we would not result in our required array, 
+    // since we are modifying lst2, so we can either create a copy of the ls2 inside the insertList method or before calling the method
+    // but i beleive it is more efficient to just create a new copy of lst2 right before calling the insertList method
+    public void insertList(int idx, MyLinkedList<AnyType> insert)
     {
-        insertList(ins, getNode(idx));
+        insertList(getNode(idx), insert);
     }
-    private void insertList(MyLinkedList<AnyType> ins, Node<AnyType> p){
-        Node<AnyType> temp = p.next;
-        p.next = ins.beginMarker.next;
-        ins.beginMarker.next.prev = p;
-        ins.endMarker.prev.next = temp;
-        temp.prev = ins.endMarker.prev;
+    private void insertList(Node<AnyType> p, MyLinkedList<AnyType> insert){
+        MyLinkedList<AnyType> ins = insert;
+        p.prev.next = ins.beginMarker.next;
+        ins.beginMarker.next.prev = p.prev;
+
+        ins.endMarker.prev.next = p;
+        p.prev = ins.endMarker.prev;
+        theSize += ins.theSize;
     }
 
 
@@ -289,11 +296,10 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
     public String toString( )
     {
         StringBuilder sb = new StringBuilder( "[ " );
-        
-        for( AnyType x : this )
+        for( AnyType x : this ){
             sb.append( x + " " );
+        }
         sb.append( "]" );
-    
         return new String( sb );
     }
     
@@ -377,7 +383,8 @@ class TestLinkedList
         System.out.println(lst + "list before");       
         // lst.erase(0, 1);
         System.out.println(lst2 +"list2");
-        lst.insertList(lst2, 0);
+        lst.insertList(0, lst2);
         System.out.println(lst + "result");
+
     }
 }
