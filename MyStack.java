@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class MyStack<AnyType>{
     ArrayList<AnyType> arr;
@@ -22,16 +23,28 @@ public class MyStack<AnyType>{
 }
 class TestMystack
 {
+    public static boolean balancingSymbols(String S){
+        char[] ch = S.toCharArray();
+        MyStack<Character> stack = new MyStack<Character>( );
+        HashSet<Character> open = new HashSet<Character>();
+        open.add('[');
+        open.add('(');
+        open.add('{');
+        for(int i = 0; i < S.length(); i++){
+            if(open.contains(ch[i])){
+                stack.push(ch[i]);
+            }else{
+                if(stack.peek() == '{' && ch[i] == '}'){
+                    stack.pop();
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main( String [ ] args )
     {
-        MyStack<Integer> stack = new MyStack<Integer>( );
-        stack.push(1);
-        stack.push(2);
-        System.out.println(stack.pop());
-        System.out.println(stack.peek());
-        stack.isEmpty();
-
-        System.out.println("After here we have the original ");
+        balancingSymbols("[({}{})]");
     }
 }
 
