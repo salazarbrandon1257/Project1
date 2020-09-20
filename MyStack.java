@@ -34,17 +34,23 @@ class TestMystack
             if(open.contains(ch[i])){
                 stack.push(ch[i]);
             }else{
-                if(stack.peek() == '{' && ch[i] == '}'){
+                if(stack.peek() == '[' && ch[i] == ']'){
                     stack.pop();
+                }else if (stack.peek() == '(' && ch[i] == ')'){
+                    stack.pop();
+                }else if(stack.peek() == '{' && ch[i] == '}'){
+                    stack.pop();
+                }else{
+                    return false;
                 }
             }
         }
-        return false;
+        return stack.isEmpty();
     }
 
     public static void main( String [ ] args )
     {
-        balancingSymbols("[({}{})]");
+        System.out.println(balancingSymbols("[({}{})]"));
     }
 }
 
