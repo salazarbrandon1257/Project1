@@ -241,6 +241,37 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         }
     }
     
+
+         
+    /**
+     * Receives two index positions as parameters, then swap
+     * @param idx the index of the object.
+     * @param idx2 the index of the object.
+     * @return the item was removed from the collection.
+     */
+    public void erase(int idx , int idx2)
+    {
+        erase(getNode(idx), idx2);
+    }
+    
+    /**
+     *  swaps the nodes at these positions by changing the links, 
+     *  provided both positions are within the current size
+     * @param p the Node containing the object.
+     * @param p the Node containing the object.
+     * @return the item was removed from the collection.
+     */
+    private void erase(Node<AnyType> p, int n)
+    {
+        for(int i = 0; i < n; i++){
+            remove(p.next);
+        }
+
+    }
+
+
+
+
     /**
      * Returns a String representation of this collection.
      */
@@ -326,11 +357,11 @@ class TestLinkedList
     {
         MyLinkedList<Integer> lst = new MyLinkedList<Integer>( );
         
-        for( int i = 1; i < 6; i++ )
+        for( int i = 1; i < 5; i++ )
             lst.add( i );
         System.out.println(lst);
         // lst.swap(0, 1);
-        lst.shift(2);
+        lst.erase(0, 1);
         System.out.println( lst );
     }
 }
