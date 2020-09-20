@@ -223,6 +223,21 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
 
 
             }
+        }else if(x > 0){
+            for (int i = 0; i < x; i++){
+                Node<AnyType> temp = beginMarker.next;
+                Node<AnyType> temp2 = endMarker.prev;
+
+                beginMarker.next = beginMarker.next.next;
+                beginMarker.next.prev = beginMarker;
+
+                temp.next = endMarker;
+                temp2.next = temp;
+                endMarker.prev = temp;
+                temp.prev = temp2;
+
+
+            }
         }
     }
     
@@ -315,7 +330,7 @@ class TestLinkedList
             lst.add( i );
         System.out.println(lst);
         // lst.swap(0, 1);
-        lst.shift(-2);
+        lst.shift(2);
         System.out.println( lst );
     }
 }
