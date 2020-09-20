@@ -202,13 +202,12 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
 
         q.prev.next = q;
         p.prev.next = p;
-        System.out.println("hey");
 
     }
-
-    public void shift(int x){
-        if(x < 0){
-            for (int i = 0; i < -x; i++){
+    // Both condiditions are O(n)
+    public void shift(int n){
+        if(n < 0){
+            for (int i = 0; i < -n; i++){
                 Node<AnyType> temp = endMarker.prev;
                 Node<AnyType> temp2 = endMarker.prev.prev;
 
@@ -223,8 +222,8 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
 
 
             }
-        }else if(x > 0){
-            for (int i = 0; i < x; i++){
+        }else if(n > 0){
+            for (int i = 0; i < n; i++){
                 Node<AnyType> temp = beginMarker.next;
                 Node<AnyType> temp2 = endMarker.prev;
 
@@ -262,10 +261,14 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
      * @return the item was removed from the collection.
      */
     private void erase(Node<AnyType> p, int n)
-    {
+    { 
+        // Is O(n). 
         for(int i = 0; i < n; i++){
-            remove(p.next);
+            p.next.prev = p.prev;
+            p.prev.next = p.next;
+            theSize--;
         }
+
 
     }
 
@@ -359,9 +362,10 @@ class TestLinkedList
         
         for( int i = 1; i < 5; i++ )
             lst.add( i );
-        System.out.println(lst);
-        // lst.swap(0, 1);
-        lst.erase(0, 1);
+        //System.out.println(lst);
+        //lst.swap(0, 0);
+        //System.out.println(lst);       
+        lst.erase(0, 2);
         System.out.println( lst );
     }
 }
