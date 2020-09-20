@@ -374,17 +374,55 @@ class TestLinkedList
     {
         MyLinkedList<Integer> lst = new MyLinkedList<Integer>( );
         MyLinkedList<Integer> lst2 = new MyLinkedList<Integer>( );
+        MyLinkedList<Integer> swap;
+        MyLinkedList<Integer> shift;
+        MyLinkedList<Integer> erase;
+        MyLinkedList<Integer> insertList;
+
         for( int i = 1; i < 5; i++ )
             lst.add( i );
         for( int i = 3; i < 8; i+=2 )
             lst2.add( i );
-        //System.out.println(lst);
-        //lst.swap(0, 0);
-        System.out.println(lst + "list before");       
+
+        System.out.println("a. swap");
+        System.out.println(lst + " this is the original list");
+        lst.swap(0, 2);
+        System.out.println(lst + " this is the list after swapping the nodes at index 0 and 2"); 
+        lst.swap(0, 2); // I now return to the original list by swapping the two nodes back
+        System.out.println(" "); 
+
+
+        System.out.println("b. shift"); 
+        System.out.print(lst + "  shifted + 1  ");  
+        lst.shift(1);
+        System.out.println(lst);
+        lst.shift(-1); // to return to the original list
+        System.out.print(lst + "  shifted - 1  ");
+        lst.shift(-1);
+        lst.shift(1);
+        System.out.println(lst);
+        System.out.println(""); 
+
+        System.out.println("c. erase"); 
+        System.out.print(lst + "  shifted + 1  ");  
+        lst.shift(1);
+        System.out.println(lst);
+        lst.shift(-1); // to return to the original list
+        System.out.print(lst + "  shifted - 1  ");
+        lst.shift(-1);
+        lst.shift(1);
+        System.out.println(lst);
+        System.out.println(""); 
+
+
+
+
+
+
         // lst.erase(0, 1);
-        System.out.println(lst2 +"list2");
-        lst.insertList(0, lst2);
-        System.out.println(lst + "result");
+        //System.out.println(lst2 + "list2");
+        //lst.insertList(0, lst2);
+        //System.out.println(lst + "result");
 
     }
 }
