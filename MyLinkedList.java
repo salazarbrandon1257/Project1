@@ -165,8 +165,6 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         
         return p.data;
     }
-
-
         
     /**
      * Receives two index positions as parameters, then swap
@@ -206,6 +204,26 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         p.prev.next = p;
         System.out.println("hey");
 
+    }
+
+    public void shift(int x){
+        if(x < 0){
+            for (int i = 0; i < -x; i++){
+                Node<AnyType> temp = endMarker.prev;
+                Node<AnyType> temp2 = endMarker.prev.prev;
+
+                endMarker.prev.next = beginMarker.next;
+                beginMarker.next = temp;
+
+                beginMarker.next.prev = beginMarker;
+                beginMarker.next.next.prev = beginMarker.next;
+
+                temp2.next = endMarker;
+                endMarker.prev = temp2;
+
+
+            }
+        }
     }
     
     /**
@@ -293,14 +311,11 @@ class TestLinkedList
     {
         MyLinkedList<Integer> lst = new MyLinkedList<Integer>( );
         
-        for( int i = 0; i < 10; i++ )
+        for( int i = 1; i < 6; i++ )
             lst.add( i );
-        
-        lst.remove( 0 );
-        lst.remove( lst.size( ) - 1 );
-        System.out.println( lst );
-        lst.swap(0, 1);
-        
+        System.out.println(lst);
+        // lst.swap(0, 1);
+        lst.shift(-2);
         System.out.println( lst );
     }
 }
