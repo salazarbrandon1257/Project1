@@ -4,10 +4,7 @@ Introduction: This is a project for my CS 5343.001 - Algorithm Analysis and Data
 In this project I will add methods to an existing linked list class and
 make a stack to solve the balanced symbol problem.
   
-
-Part 1 
-
-   Modified the author's "MyLinkedList" class to add the following methods:
+1. Modified the author's "MyLinkedList" class to add the following methods:
 
    a.  swap
         receives two index positions as parameters, and swaps the nodes at
