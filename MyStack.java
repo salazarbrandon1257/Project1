@@ -9,11 +9,13 @@ public class MyStack<AnyType>{
         arr.add(x);
     }
     public AnyType peek(){
-        System.out.println(arr.get(arr.size() - 1));
         return arr.get(arr.size() - 1);
     }
     public AnyType pop(){
-        return  arr.remove(arr.size() - 1);
+        return arr.remove(arr.size() - 1);
+    }
+    public boolean isEmpty(){
+        return arr.isEmpty();
     }
 
 
@@ -25,7 +27,11 @@ class TestMystack
         MyStack<Integer> stack = new MyStack<Integer>( );
         stack.push(1);
         stack.push(2);
-        stack.peek();
+        System.out.println(stack.pop());
+        System.out.println(stack.peek());
+        stack.isEmpty();
+
+        System.out.println("After here we have the original ");
     }
 }
 
