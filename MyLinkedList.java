@@ -170,22 +170,12 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
      * Receives two index positions as parameters, then swap
      * @param idx the index of the object.
      * @param idx2 the index of the object.
-     * @return the item was removed from the collection.
      */
-    public void swap( int idx , int idx2)
-    {
+    public void swap(int idx , int idx2){
         swap(getNode(idx), getNode(idx2));
     }
-    
-    /**
-     *  swaps the nodes at these positions by changing the links, 
-     *  provided both positions are within the current size
-     * @param p the Node containing the object.
-     * @param p the Node containing the object.
-     * @return the item was removed from the collection.
-     */
-    private void swap (Node<AnyType> p, Node<AnyType> q)
-    {
+
+    private void swap (Node<AnyType> p, Node<AnyType> q){
         Node<AnyType> temp2;
         Node<AnyType> temp3;
 
@@ -204,7 +194,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         p.prev.next = p;
 
     }
-    // Both condiditions are O(n)
+    // Both condiditions are O(n) 
     public void shift(int n){
         if(n < 0){
             for (int i = 0; i < -n; i++){
@@ -239,30 +229,14 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
             }
         }
     }
-    
-
-         
-    /**
-     * Receives two index positions as parameters, then swap
-     * @param idx the index of the object.
-     * @param idx2 the index of the object.
-     * @return the item was removed from the collection.
-     */
+    // Is O(n). 
     public void erase(int idx , int idx2)
     {
         erase(getNode(idx), idx2);
     }
-    
-    /**
-     *  swaps the nodes at these positions by changing the links, 
-     *  provided both positions are within the current size
-     * @param p the Node containing the object.
-     * @param p the Node containing the object.
-     * @return the item was removed from the collection.
-     */
+
     private void erase(Node<AnyType> p, int n)
     { 
-        // Is O(n). 
         for(int i = 0; i < n; i++){
             p.next.prev = p.prev;
             p.prev.next = p.next;
@@ -271,8 +245,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>
         }
     }
 
-
-    // Is O(n) due to getNode method, if you call this function twice however we would not result in our required array, 
+    // Is O(n) due to getNode method, if you call this function twice however we would not result in our required array
     // since we are modifying lst2, so we can either create a copy of the ls2 inside the insertList method or before calling the method
     // but i beleive it is more efficient to just create a new copy of lst2 right before calling the insertList method
     public void insertList(int idx, MyLinkedList<AnyType> insert)
