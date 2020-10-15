@@ -21,8 +21,7 @@ public class MyStack<AnyType>{
 
 
 }
-class TestMystack
-{
+class TestMystack{
     public static boolean balancingSymbols(String S){
         char[] ch = S.toCharArray();
         MyStack<Character> stack = new MyStack<Character>( );
